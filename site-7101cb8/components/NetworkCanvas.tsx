@@ -55,22 +55,13 @@ export default function NetworkCanvas() {
     let palette = {
       line: "rgba(220, 232, 255, 0.15)",
       node: "rgba(245, 249, 255, 0.82)",
-      nodeAccent: ["rgba(245, 249, 255, 0.96)"] as string[],
     };
 
     const syncPalette = () => {
       const theme = document.documentElement.getAttribute("data-theme") || "dark";
       palette = theme === "light"
-        ? {
-            line: "rgba(64,64,64,0.12)",
-            node: "rgba(64,64,64,0.9)",
-            nodeAccent: ["rgba(64,64,64,0.95)"] as string[],
-          }
-        : {
-            line: "rgba(220, 232, 255, 0.32)",
-            node: "rgba(245, 249, 255, 0.95)",
-            nodeAccent: ["rgba(245, 249, 255, 0.96)"] as string[],
-          };
+        ? { line: "rgba(10, 18, 32, 0.24)", node: "rgba(232, 237, 242, 1)" }
+        : { line: "rgba(220, 232, 255, 0.32)", node: "rgba(245, 249, 255, 0.95)" };
     };
 
     const resize = () => {
@@ -166,9 +157,9 @@ export default function NetworkCanvas() {
       }
 
       context.globalAlpha = 1;
-      nodes.forEach((node, index) => {
+      nodes.forEach((node) => {
         context.beginPath();
-        context.fillStyle = palette.nodeAccent[index % palette.nodeAccent.length] || palette.node;
+        context.fillStyle = palette.node;
         context.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         context.fill();
       });

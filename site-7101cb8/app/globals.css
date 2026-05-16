@@ -93,13 +93,3 @@ html { scroll-behavior: smooth; }
 /* Cursor glow anchor so the cursor glow layer can position itself with pointer events none */
 .cursor-glow-root { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
 
-/* Project image color adjustments */
-.project-image--colorize {
-  filter: sepia(0.18) saturate(1.3) hue-rotate(-6deg) contrast(1.02);
-  transition: filter 0.45s cubic-bezier(.2,.9,.2,1);
-}
-
-.project-image--colorize:hover {
-  filter: sepia(0.12) saturate(1.45) hue-rotate(-4deg) contrast(1.04) brightness(1.02);
-}
-

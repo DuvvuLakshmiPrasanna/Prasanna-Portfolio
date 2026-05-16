@@ -99,9 +99,9 @@ export default function AboutSection() {
             <div className="grid grid-cols-2 gap-4">
               <GlassCard className="flex h-40 flex-col items-center justify-center text-center">
                 <p className="mb-2 text-4xl font-bold md:text-5xl text-primary">
-                  1+
+                  5+
                 </p>
-                <p className="text-sm text-foreground/90">Year Experience</p>
+                <p className="text-sm text-foreground/90">Years Experience</p>
               </GlassCard>
 
               <GlassCard className="flex h-40 flex-col items-center justify-center text-center">

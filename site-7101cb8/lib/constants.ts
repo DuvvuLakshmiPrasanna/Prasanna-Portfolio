@@ -1,7 +1,7 @@
 // Portfolio Data and Constants
 
 export const PORTFOLIO_DATA = {
-  name: "Duvvu Lakshmi Prasanna",
+  name: "Prasanna Yadav",
   title: "Full Stack Developer — B.Tech CSE (Data Science)",
   degree: "3rd-year B.Tech Computer Science (Data Science)",
   shortBio:
@@ -53,7 +53,6 @@ export const PROJECTS = [
     github: "",
     live: "https://lumixproject.onrender.com",
     image: "/projects/lumix.svg",
-    variant: "standard",
   },
   {
     id: 2,
@@ -66,7 +65,6 @@ export const PROJECTS = [
     github: "",
     live: "https://llm-powered-intent-router.onrender.com/",
     image: "/projects/intent-router.svg",
-    variant: "standard",
   },
   {
     id: 3,
@@ -79,20 +77,6 @@ export const PROJECTS = [
     github: "https://github.com/DuvvuLakshmiPrasanna",
     live: "",
     image: "/projects/notice-hub.svg",
-    variant: "standard",
-  },
-  {
-    id: 4,
-    title: "React State Management Comparison",
-    description:
-      "A side-by-side comparison of React state management libraries — Redux, Zustand, Recoil, and Context API — with real-world use cases and performance benchmarks.",
-    longDescription:
-      "A motion-first, luxury-style comparison experience for React state management libraries. The case study balances clean hierarchy, frosted surfaces, and practical decision-making for real-world app architecture.",
-    tags: ["React", "Redux", "Zustand", "Recoil", "Context API"],
-    github: "https://github.com/DuvvuLakshmiPrasanna/React-State-Management-Comparison-New",
-    live: "https://react-state-management-comparison-n.vercel.app/",
-    image: "",
-    variant: "showcase",
   },
 ];
 

@@ -64,7 +64,7 @@ export default function HeroSection() {
           </p>
 
           <h1 ref={nameRef} className="mt-4 whitespace-nowrap text-[clamp(1.35rem,4.8vw,4.25rem)] font-semibold leading-none tracking-[-0.09em] text-foreground">
-            Duvvu Lakshmi Prasanna
+            Prasanna Yadav
           </h1>
 
           <div ref={chipsRef} className="mt-6 flex flex-wrap gap-3">

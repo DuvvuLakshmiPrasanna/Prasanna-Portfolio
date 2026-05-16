@@ -16,28 +16,28 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Duvvu Lakshmi Prasanna - Full Stack Developer",
-  description: "Portfolio showcasing projects, skills, and experience for Duvvu Lakshmi Prasanna.",
+  title: "Prasanna Yadav - Full Stack Developer",
+  description: "Portfolio showcasing projects, skills, and experience for Prasanna Yadav.",
   keywords: "Developer, Full Stack, React, Next.js, TypeScript, Web Development, Data Science, Node.js",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://prasanna-portfolio.vercel.app",
-    siteName: "Duvvu Lakshmi Prasanna",
-    title: "Duvvu Lakshmi Prasanna - Full Stack Developer",
+    siteName: "Prasanna Yadav",
+    title: "Prasanna Yadav - Full Stack Developer",
     description: "Portfolio showcasing full-stack projects, skills, and experience.",
     images: [{
       url: "https://prasanna-portfolio.vercel.app/og-image.png",
       width: 1200,
       height: 630,
-      alt: "Duvvu Lakshmi Prasanna Portfolio",
+      alt: "Prasanna Yadav Portfolio",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Duvvu Lakshmi Prasanna - Full Stack Developer",
+    title: "Prasanna Yadav - Full Stack Developer",
     description: "Portfolio with live projects.",
-    creator: "@duvvulakshmiprasanna",
+    creator: "@prasannayadav",
   },
 };
 
@@ -67,7 +67,7 @@ export default function RootLayout({
                 try {
                   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                   document.documentElement.setAttribute('data-theme', theme);
-                  document.documentElement.style.colorScheme = theme;
+                  document.documentElement.style.colorScheme = 'dark';
                 } catch (e) {}
               })()
             `,

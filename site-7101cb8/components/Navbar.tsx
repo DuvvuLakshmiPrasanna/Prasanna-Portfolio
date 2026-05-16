@@ -14,33 +14,23 @@ import {
 import { NAVIGATION_ITEMS } from "@/lib/constants";
 import { useTheme } from "@/app/ThemeProvider";
 import { cn } from "@/lib/utils";
-import { PORTFOLIO_DATA } from "@/lib/constants";
 
-function BrandMark({ theme }: { theme: "dark" | "light" }) {
-  const isDark = theme === "dark";
-
+function BrandMark() {
   return (
-    <svg viewBox="0 0 132 40" className="h-10 w-auto" aria-hidden="true">
+    <svg viewBox="0 0 92 40" className="h-10 w-auto" aria-hidden="true">
       <defs>
-        {!isDark && (
-          <linearGradient id="py-mark" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="var(--primary)" />
-            <stop offset="100%" stopColor="var(--secondary)" />
-          </linearGradient>
-        )}
+        <linearGradient id="py-mark" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="var(--primary)" />
+          <stop offset="100%" stopColor="var(--secondary)" />
+        </linearGradient>
       </defs>
-      <text
-        x="0"
-        y="31"
-        fill={isDark ? "#ffffff" : "url(#py-mark)"}
-        fontFamily="var(--font-syne, sans-serif)"
-        fontSize="28"
-        fontWeight="800"
-        letterSpacing="-4"
-      >
-        LP
+      <text x="0" y="31" fill="url(#py-mark)" fontFamily="var(--font-syne, sans-serif)" fontSize="30" fontWeight="800" letterSpacing="-4">
+        P
       </text>
-      <path d="M5 35H66" stroke={isDark ? "#ffffff" : "url(#py-mark)"} strokeLinecap="round" strokeWidth="2.5" opacity={isDark ? 0.92 : 0.85} />
+      <text x="24" y="31" fill="url(#py-mark)" fontFamily="var(--font-syne, sans-serif)" fontSize="30" fontWeight="800" letterSpacing="-4">
+        Y
+      </text>
+      <path d="M5 35H69" stroke="url(#py-mark)" strokeLinecap="round" strokeWidth="2.5" opacity="0.85" />
     </svg>
   );
 }
@@ -90,8 +80,8 @@ export default function Navbar() {
     <nav className="fixed left-0 right-0 top-4 z-50 px-4 sm:px-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-border/70 bg-surface/80 px-4 py-3 shadow-luxury backdrop-blur-2xl lg:px-5">
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-[0.25em] text-foreground">
-          <BrandMark theme={theme} />
-          <span className="sr-only">{PORTFOLIO_DATA.name}</span>
+          <BrandMark />
+          <span className="sr-only">Prasanna Yadav</span>
         </Link>
 
         <div className="hidden items-center gap-1 rounded-full border border-border/70 bg-card/60 p-1 lg:flex">
