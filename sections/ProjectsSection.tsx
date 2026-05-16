@@ -110,8 +110,8 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
               className={`h-56 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${project.id === 3 ? 'project-image--colorize' : ''}`}
               loading={project.id === 1 ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/35 to-transparent" />
-            <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.16)_50%,transparent_100%)] opacity-40" />
+            <div className="project-image-overlay absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/35 to-transparent" />
+            <div className="project-image-gloss absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.16)_50%,transparent_100%)] opacity-40" />
             <div className="absolute inset-0 flex h-56 flex-col justify-between p-6 text-white">
               <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/70">
                 <span>Case study {project.id}</span>

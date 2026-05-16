@@ -103,3 +103,26 @@ html { scroll-behavior: smooth; }
   filter: sepia(0.12) saturate(1.45) hue-rotate(-4deg) contrast(1.04) brightness(1.02);
 }
 
+/* Theme-specific image/overlay adjustments to improve visibility in both light and dark modes */
+[data-theme="light"] .project-image--colorize {
+  filter: sepia(0.06) saturate(1.12) contrast(1.02) brightness(0.94);
+  mix-blend-mode: normal;
+}
+
+[data-theme="dark"] .project-image--colorize {
+  filter: brightness(1.08) saturate(1.18) contrast(1.06);
+  mix-blend-mode: normal;
+}
+
+/* Overlay adjustments */
+[data-theme="light"] .project-image-overlay {
+  background: linear-gradient(to top, rgba(255,255,255,0.62), rgba(255,255,255,0.28) 36%, transparent 100%);
+}
+
+[data-theme="dark"] .project-image-overlay {
+  background: linear-gradient(to top, rgba(2,6,23,0.72), rgba(2,6,23,0.36) 36%, transparent 100%);
+}
+
+[data-theme="light"] .project-image-gloss { opacity: 0.22 !important; }
+[data-theme="dark"] .project-image-gloss { opacity: 0.42 !important; }
+
