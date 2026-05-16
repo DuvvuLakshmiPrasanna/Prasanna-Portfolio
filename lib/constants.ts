@@ -78,7 +78,7 @@ export const PROJECTS = [
     tags: ["Firebase", "HTML", "CSS", "JavaScript"],
     github: "https://github.com/DuvvuLakshmiPrasanna",
     live: "",
-    image: "/projects/notice-hub.svg",
+    image: "/projects/lumix.svg",
     variant: "standard",
   },
   {
@@ -91,7 +91,7 @@ export const PROJECTS = [
     tags: ["React", "Redux", "Zustand", "Recoil", "Context API"],
     github: "https://github.com/DuvvuLakshmiPrasanna/React-State-Management-Comparison-New",
     live: "https://react-state-management-comparison-n.vercel.app/",
-    image: "",
+    image: "/projects/intent-router.svg",
     variant: "showcase",
   },
 ];
