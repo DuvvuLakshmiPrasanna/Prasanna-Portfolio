@@ -2,41 +2,53 @@
 
 export const PORTFOLIO_DATA = {
   name: "Duvvu Lakshmi Prasanna",
-  title: "Full Stack Developer — B.Tech CSE (Data Science)",
-  degree: "3rd-year B.Tech Computer Science (Data Science)",
+  title: "Full Stack Developer | B.Tech CSE (Data Science)",
+  degree: "4th-year B.Tech Computer Science (Data Science)",
   shortBio:
-    "Motivated Full Stack Developer and B.Tech (Data Science) student. Solved 300+ DSA problems across LeetCode and GeeksforGeeks. Building scalable, user-focused web and mobile applications.",
+    "Full Stack Developer building production-ready web and mobile applications.",
   longBio:
-    "Motivated 3rd-year B.Tech Computer Science (Data Science) student and Full Stack Developer with hands-on experience building scalable web and mobile applications. Strong foundation in Data Structures & Algorithms, OOP, and the full SDLC. Proficient in React.js, Node.js, Python, and Java.",
+    "Full Stack Developer building production-ready web and mobile applications. Passionate about creating elegant, user-focused digital experiences that solve real-world problems.\n\nProficient in React.js, Node.js, Python, and REST APIs. Strong foundation in system design, scalable architecture, and modern development practices.\n\n3rd Year B.Tech CSE (Data Science) student exploring the intersection of web development, data science, and product innovation.",
   email: "ig.prasannayadav@gmail.com",
   phone: "7306742255",
   github: "https://github.com/DuvvuLakshmiPrasanna",
   linkedin: "https://www.linkedin.com/in/prasanna-yadav2304",
-  location: "(Location not provided)",
-  resumeUrl: "",
+  location: "Andhra Pradesh, India",
+  resumeUrl: "https://drive.google.com/file/d/1r0EP0ru71Zi08469QAI2b3S7EdA8offd/view?usp=drive_link",
 };
 
 export const SKILLS = {
   categories: [
     {
-      title: "Frontend (Full Stack Development)",
-      items: ["HTML5", "CSS3", "JavaScript (ES6)", "Bootstrap"],
+      title: "Languages",
+      items: ["Python", "Java", "C++", "C", "TypeScript", "JavaScript"],
     },
     {
-      title: "Frameworks & Libraries",
-      items: ["React.js", "React Native", "Node.js", "Bootstrap", "NumPy", "Pandas"],
+      title: "Frontend",
+      items: ["HTML", "CSS", "React.js", "React Native", "Bootstrap"],
     },
     {
-      title: "Developer Tools",
-      items: ["Git", "GitHub", "REST APIs", "Jupyter Notebooks", "VS Code", "Docker"],
+      title: "Backend & APIs",
+      items: ["Node.js", "Express.js", "REST APIs"],
     },
     {
       title: "Databases",
-      items: ["Firebase", "MongoDB", "SQL (PostgreSQL)", "SQL (MySQL)"],
+      items: ["SQL (PostgreSQL)", "SQL (MySQL)", "MongoDB", "Firebase (NoSQL)"],
     },
     {
-      title: "Programming Languages",
-      items: ["Python", "Java", "C++", "C"],
+      title: "CS Fundamentals",
+      items: ["Data Structures & Algorithms", "OOP", "OS", "Networks", "DBMS"],
+    },
+    {
+      title: "Developer Tools",
+      items: ["VS Code", "Figma", "Cursor", "Google Colab", "Jupyter", "Postman", "GenAI tools"],
+    },
+    {
+      title: "Cloud & DevOps",
+      items: ["AWS (basics)", "Docker", "Git", "GitHub"],
+    },
+    {
+      title: "Soft Skills",
+      items: ["Leadership", "Teamwork", "Problem Solving"],
     },
   ],
 };
@@ -46,53 +58,53 @@ export const PROJECTS = [
     id: 1,
     title: "LUMIX — AI-Powered Development Tools",
     description:
-      "AI-integrated development platform improving developer productivity with automated code insights.",
+      "AI-powered platform delivering real-time code suggestions and automated developer insights with modular REST APIs built on clean architecture principles.",
     longDescription:
-      "Architected an AI-integrated development platform using JavaScript and Node.js, boosting developer productivity through automated code insights and GenAI-powered recommendations. Built modular REST APIs and intelligent search features to streamline code navigation.",
-    tags: ["Node.js", "JavaScript", "REST API", "GenAI"],
-    github: "",
+      "Built an AI-powered development platform that surfaces real-time code suggestions and automated developer insights. Designed modular REST APIs with clean code principles to keep the architecture scalable and maintainable.",
+    tags: ["HTML", "CSS", "JavaScript", "Node.js", "REST API"],
+    github: "https://github.com/DuvvuLakshmiPrasanna/AI_World",
     live: "https://lumixproject.onrender.com",
     image: "/projects/lumix.svg",
     variant: "standard",
   },
   {
     id: 2,
+    title: "React State Management Comparison",
+    description:
+      "Interactive comparison tool showcasing Redux, Zustand, Recoil and Context API with real-world examples, performance metrics and live benchmarks. Designed with performance profiling and visual metrics to help developers choose the right state management library.",
+    longDescription:
+      "Built an interactive tool comparing popular React state management solutions. Showcases Redux, Zustand, Recoil, and Context API with real-world examples and performance benchmarks. Includes performance profiling and comprehensive metrics to help developers select the optimal solution.",
+    tags: ["React", "Redux", "Zustand", "TypeScript"],
+    github: "https://github.com/DuvvuLakshmiPrasanna/React-State-Management-Comparison-New",
+    live: "https://react-state-management-comparison-n.vercel.app/",
+    image: "/projects/state-management.svg",
+    variant: "standard",
+  },
+  {
+    id: 3,
     title: "LLM-Powered Intent Router",
     description:
-      "Intent classification and routing system built with Node.js and LLMs for dynamic persona routing.",
+      "LLM-based system that intelligently classifies user intent and routes queries to appropriate handlers with Express REST APIs and structured responses. Implements sophisticated natural language understanding with dynamic routing and intelligent request processing pipelines.",
     longDescription:
-      "Built an LLM-powered intent classification and routing system using a two-stage pipeline with confidence-based decision logic. Developed scalable REST APIs with Node.js and Express to enable real-time query handling and dynamic routing to AI personas.",
+      "Built an LLM-based system that classifies user intent and routes queries to the right AI handler. Developed Express REST APIs to process requests in real time with structured JSON responses. Features intelligent routing logic with natural language understanding and advanced request processing.",
     tags: ["Node.js", "Express", "LLM", "REST API"],
-    github: "",
+    github: "https://github.com/DuvvuLakshmiPrasanna/LLM-powered-intent-router",
     live: "https://llm-powered-intent-router.onrender.com/",
     image: "/projects/intent-router.svg",
     variant: "standard",
   },
   {
-    id: 3,
+    id: 4,
     title: "Notice Hub — Centralized Announcement Platform",
     description:
-      "Responsive announcement platform with Firebase for real-time updates and increased engagement.",
+      "Responsive announcement platform with role-based access, real-time updates and Firebase Realtime Database integration for live sync functionality.",
     longDescription:
-      "Developed a responsive front-end using HTML, CSS and vanilla JavaScript with Firebase (NoSQL) for real-time data updates. The platform improved information access for users and increased engagement.",
-    tags: ["Firebase", "HTML", "CSS", "JavaScript"],
-    github: "https://github.com/DuvvuLakshmiPrasanna",
-    live: "",
-    image: "/projects/lumix.svg",
+      "Built a responsive announcement platform with role-based access and real-time updates. Integrated Firebase Realtime Database for live sync and persistent multi-user session storage.",
+    tags: ["HTML", "CSS", "JavaScript", "Firebase"],
+    github: "https://github.com/DuvvuLakshmiPrasanna/Notice_Hub",
+    live: "https://duvvulakshmiprasanna.github.io/Notice_Hub/",
+    image: "/projects/notice-hub.svg",
     variant: "standard",
-  },
-  {
-    id: 4,
-    title: "React State Management Comparison",
-    description:
-      "A side-by-side comparison of React state management libraries — Redux, Zustand, Recoil, and Context API — with real-world use cases and performance benchmarks.",
-    longDescription:
-      "A motion-first, luxury-style comparison experience for React state management libraries. The case study balances clean hierarchy, frosted surfaces, and practical decision-making for real-world app architecture.",
-    tags: ["React", "Redux", "Zustand", "Recoil", "Context API"],
-    github: "https://github.com/DuvvuLakshmiPrasanna/React-State-Management-Comparison-New",
-    live: "https://react-state-management-comparison-n.vercel.app/",
-    image: "/projects/intent-router.svg",
-    variant: "showcase",
   },
 ];
 
@@ -101,25 +113,107 @@ export const EXPERIENCE = [
     id: 1,
     company: "Technical Hub",
     position: "Full Stack Developer Intern",
-    duration: "June 2024 – Present",
+    duration: "May 2026 – June 2026",
     description:
-      "Engineered and deployed multiple full-stack applications using React Native and Node.js. Integrated backend APIs, optimized performance, and followed Agile practices across the SDLC.",
+      "Developed and deployed full-stack apps using React Native and Node.js with optimized API integration.",
     achievements: [
-      "Engineered and deployed 3+ full-stack applications",
-      "Improved response times and UX through performance optimizations",
-      "Participated in code reviews and CI/CD deployment workflows",
+      "Enhanced app performance, fixed bugs, and improved UX through efficient state and API management",
+      "Followed Agile workflows, maintained Git version control, and participated in peer code reviews",
+      "Built production-ready features with a focus on reliability and maintainability",
+    ],
+    offerLetter:
+      "https://drive.google.com/file/d/1g7crCvVdDMeZgIonjfO84YQrIZWaGruN/view?usp=sharing",
+  },
+];
+
+export const ACHIEVEMENTS = [
+  {
+    label: "LeetCode",
+    href: "https://leetcode.com/u/prasannayadav/",
+    text: "Solved 150+ problems in Data Structures and Algorithms.",
+  },
+  {
+    label: "GeeksforGeeks",
+    href: "https://www.geeksforgeeks.org/profile/prasannay8d9p",
+    text: "Solved 150+ DSA problems and strengthened algorithmic thinking.",
+  },
+  {
+    label: "Codeforces",
+    href: "https://codeforces.com/profile/prasannayadav",
+    text: "Completed competitive programming challenges regularly.",
+  },
+  {
+    label: "HackerRank",
+    href: "https://www.hackerrank.com/profile/prasannayadav241",
+    text: "Earned Golden badge in C and Silver badges in Java and Python.",
+  },
+];;
+
+export const EDUCATION = [
+  {
+    title: "B.Tech in Computer Science & Engineering (Specialization: Data Science)",
+    institution: "Aditya College of Engineering and Technology",
+    detail: "CGPA: 8.08/10",
+    duration: "Sept 2023 – 2027",
+  },
+  {
+    title: "Intermediate [MPC]",
+    institution: "Sri Chaitanya Junior College",
+    detail: "Percentage: 82%",
+    duration: "Completed",
+  },
+  {
+    title: "High School",
+    institution: "Bhashyam Educational Institutions",
+    detail: "CGPA: 10/10",
+    duration: "Completed",
+  },
+];
+
+export const CERTIFICATIONS = [
+  {
+    title: "Cisco - Web & Programming",
+    items: [
+      { label: "HTML Essentials", href: "https://drive.google.com/file/d/1wAziycAJUGoCn-medftrjyXf3j5uF5YK/view?usp=drive_link" },
+      { label: "CSS Essentials", href: "https://drive.google.com/file/d/1ig8VbzGE86mEPwbvJeivFt1Xr3l-pcou/view?usp=drive_link" },
+      { label: "JavaScript Essentials", href: "https://drive.google.com/file/d/1yLNkz-4EV2rr7bL8Nk0fcr8SjrTFNVD6/view?usp=drive_link" },
+      { label: "Python Essentials", href: "https://drive.google.com/file/d/1uWAUzYSvWiwOUIN5HfilFszG-2Oeqdp2/view?usp=drive_link" },
+      { label: "Programming Essentials in C", href: "https://drive.google.com/file/d/1130QQGDwppZilo5irfBfPpCRN9aOwA3L/view?usp=sharing" },
     ],
   },
   {
-    id: 2,
-    company: "Aditya College of Engineering and Technology",
-    position: "Member — Technical Club",
-    duration: "Jan 2024 – Present",
-    description:
-      "Contributed to workshops and coordinated a team to build a club management web application, gaining full SDLC experience.",
-    achievements: [
-      "Led a 5-member team to build a club management app",
-      "Delivered 10+ hands-on workshops to strengthen developer skills",
+    title: "NPTEL",
+    items: [
+      { label: "The Joy of Computing Using Python", href: "https://drive.google.com/file/d/18-4-qHfpwvQ1I94bnqY9PMl349MNudVd/view?usp=drive_link" },
+      { label: "Data Structure and Algorithms Using Java", href: "https://drive.google.com/file/d/1GDnvZZ7VnI3uCbizZP5Pq5r8hGJZ_z1h/view?usp=drive_link" },
+    ],
+  },
+  {
+    title: "Cisco - Systems & Data",
+    items: [
+      { label: "Introduction to Data Science", href: "https://drive.google.com/file/d/1Jrtb47UdGK8Zs9Pz4uMawckqMwuFfSaP/view?usp=drive_link" },
+      { label: "Operating Systems Basics", href: "https://drive.google.com/file/d/1R4pdtw3A2dGMPZmSa_e9BLHMe0-YtumC/view?usp=drive_link" },
+    ],
+  },
+  {
+    title: "Microsoft & MongoDB",
+    items: [
+      { label: "GitHub Foundations", href: "https://drive.google.com/file/d/1ampPWo_hKQdqehqmtV5DfocZ2_0jlwm1/view?usp=sharing" },
+      { label: "MongoDB Certified Associate Developer", href: "https://drive.google.com/file/d/1hXMR8VoA8duEx5X-wnLL5fsHIebunVfx/view?usp=sharing" },
+    ],
+  },
+  {
+    title: "Oracle Academy",
+    items: [
+      { label: "Java Foundation", href: "https://drive.google.com/file/d/1h-sSGyARcbbPuMGnNhv05JVg_LtuOUxk/view?usp=sharing" },
+      { label: "Java Programming", href: "https://drive.google.com/file/d/1wHhdpnNaMZ2tPRvei3qd44YP4C6h1GPW/view?usp=drive_link" },
+    ],
+  },
+  {
+    title: "Red Hat Academy",
+    items: [
+      { label: "Introduction to Python Programming", href: "https://drive.google.com/file/d/12fNCIEn2vkl8_cExgSA0yeaGAVV0lnN7/view?usp=sharing" },
+      { label: "IT Specialist: HTML and CSS", href: "https://drive.google.com/file/d/16RZFnbI9YqlgamFKHb7MCllLwOQuMZ7R/view?usp=sharing" },
     ],
   },
 ];
@@ -157,6 +251,9 @@ export const NAVIGATION_ITEMS = [
   { label: "Skills", href: "#skills", id: "skills" },
   { label: "Projects", href: "#projects", id: "projects" },
   { label: "Experience", href: "#experience", id: "experience" },
+  { label: "Achievements", href: "#achievements", id: "achievements" },
+  { label: "Education", href: "#education", id: "education" },
+  { label: "Certifications", href: "#certifications", id: "certifications" },
   { label: "Contact", href: "#contact", id: "contact" },
 ];
 

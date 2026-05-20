@@ -2,14 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import MagneticButton from "@/components/MagneticButton";
-import { ChevronDown, Download, ExternalLink } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/lib/constants";
 
 const HERO_ROLES = [
-  "High-end Frontend Developer",
-  "Motion-rich UI Engineer",
-  "Creative Developer & Builder",
+  "Full Stack Developer",
+  "React.js • Node.js • Python",
+  "B.Tech CSE (Data Science)",
 ];
 
 export default function HeroSection() {
@@ -19,7 +17,6 @@ export default function HeroSection() {
   const chipsRef = useRef<HTMLDivElement | null>(null);
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
   const ctaRef = useRef<HTMLDivElement | null>(null);
-  const scrollRef = useRef<HTMLDivElement | null>(null);
   const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
@@ -42,14 +39,14 @@ export default function HeroSection() {
       })
         .from(chipsRef.current?.children || [], { y: 18, opacity: 0, stagger: 0.08, duration: 0.55 }, "-=0.35")
         .from(descriptionRef.current, { y: 26, opacity: 0, duration: 0.75 }, "-=0.35")
-        .from(ctaRef.current?.children || [], { y: 18, opacity: 0, stagger: 0.12, duration: 0.5 }, "-=0.25")
-        .from(scrollRef.current, { y: 14, opacity: 0, duration: 0.55 }, "-=0.05");
+        .from(ctaRef.current?.children || [], { y: 18, opacity: 0, stagger: 0.12, duration: 0.5 }, "-=0.25");
 
       return () => tl.kill();
     }, rootRef);
 
     return () => ctx.revert();
   }, []);
+
 
   return (
     <section id="hero" ref={rootRef} className="relative flex min-h-[100dvh] items-center overflow-hidden pb-20 pt-28 sm:pt-32">
@@ -72,10 +69,7 @@ export default function HeroSection() {
               {HERO_ROLES[roleIndex]}
             </span>
             <span className="rounded-full border border-border/70 bg-card/70 px-4 py-2 text-sm text-foreground/92 backdrop-blur-xl">
-              {PORTFOLIO_DATA.title}
-            </span>
-            <span className="rounded-full border border-border/70 bg-card/70 px-4 py-2 font-space-mono text-xs uppercase tracking-[0.24em] text-foreground/72 backdrop-blur-xl">
-              React Native • Node.js • Python
+              {PORTFOLIO_DATA.degree}
             </span>
           </div>
 
@@ -83,29 +77,38 @@ export default function HeroSection() {
             {PORTFOLIO_DATA.longBio}
           </p>
 
-          <div ref={ctaRef} className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <MagneticButton
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-4 text-base font-semibold text-white shadow-luxury transition-transform duration-300 hover:shadow-glow-lg"
-              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+          <div className="mt-6 flex items-center gap-6">
+            <a
+              href={PORTFOLIO_DATA.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-card/75 px-5 py-4 text-base font-semibold text-foreground shadow-luxury backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
             >
-              <ExternalLink size={18} />
-              Explore Projects
-            </MagneticButton>
+              <i className="fa-brands fa-github text-foreground" aria-hidden="true" />
+              GitHub
+            </a>
+            <a
+              href={PORTFOLIO_DATA.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-card/75 px-5 py-4 text-base font-semibold text-foreground shadow-luxury backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
+            >
+              <i className="fa-brands fa-linkedin text-foreground" aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a
+              href={`mailto:${PORTFOLIO_DATA.email}`}
+              className="inline-flex items-center gap-2 rounded-full bg-card/75 px-5 py-4 text-base font-semibold text-foreground shadow-luxury backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
+            >
+              <i className="fa-solid fa-envelope text-foreground" aria-hidden="true" />
+              Mail
+            </a>
+          </div>
 
-            <MagneticButton
-              className="inline-flex items-center justify-center gap-3 rounded-full border border-border/70 bg-card/75 px-7 py-4 text-base font-semibold text-foreground shadow-luxury backdrop-blur-xl transition-all duration-300 hover:border-secondary/30 hover:shadow-glow"
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              <Download size={18} />
-              Contact Me
-            </MagneticButton>
+          <div ref={ctaRef} className="mt-10 flex flex-wrap gap-3">
           </div>
         </div>
 
-        <div ref={scrollRef} className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-foreground/82">
-          <span className="font-space-mono text-[0.72rem] uppercase tracking-[0.4em] sm:text-xs">Scroll to explore ↓</span>
-          <ChevronDown size={20} className="animate-bounce" />
-        </div>
       </div>
     </section>
   );

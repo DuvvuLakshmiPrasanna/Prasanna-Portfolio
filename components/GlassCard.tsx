@@ -16,7 +16,7 @@ export default function GlassCard({
     <div
       className={cn(
         "relative overflow-hidden rounded-3xl border border-border/70 bg-card/95 p-6 text-foreground shadow-luxury backdrop-blur-2xl transition-all duration-500",
-        hoverEffect && "hover:-translate-y-1 hover:border-primary/30 hover:shadow-glow-lg",
+        hoverEffect && "hover:scale-[1.02] hover:border-primary/40 hover:shadow-glow-lg hover:bg-card",
         className
       )}
     >

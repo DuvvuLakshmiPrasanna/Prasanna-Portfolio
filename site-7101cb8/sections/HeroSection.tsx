@@ -88,7 +88,7 @@ export default function HeroSection() {
               className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-4 text-base font-semibold text-white shadow-luxury transition-transform duration-300 hover:shadow-glow-lg"
               onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
             >
-              <ExternalLink size={18} />
+              <i className="fa-solid fa-arrow-up-right text-white" aria-hidden="true" />
               Explore Projects
             </MagneticButton>
 
@@ -96,7 +96,7 @@ export default function HeroSection() {
               className="inline-flex items-center justify-center gap-3 rounded-full border border-border/70 bg-card/75 px-7 py-4 text-base font-semibold text-foreground shadow-luxury backdrop-blur-xl transition-all duration-300 hover:border-secondary/30 hover:shadow-glow"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
-              <Download size={18} />
+              <i className="fa-solid fa-download text-foreground" aria-hidden="true" />
               Contact Me
             </MagneticButton>
           </div>

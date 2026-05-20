@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import CursorGlow from "@/components/CursorGlow";
+// CursorGlow removed to eliminate floating badge overlay
 import ScrollProgress from "@/components/ScrollProgress";
 import NetworkCanvas from "@/components/NetworkCanvas";
 import Footer from "@/components/Footer";
@@ -26,7 +26,6 @@ export default function Home() {
     <div className="relative isolate min-h-screen bg-background text-foreground">
       <ScrollProgress />
       <NetworkCanvas />
-      <CursorGlow />
       <Navbar />
 
       <main className="relative z-10">

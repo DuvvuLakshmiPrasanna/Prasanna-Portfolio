@@ -58,6 +58,7 @@ export default function RootLayout({
         <meta name="color-scheme" content="dark" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <Script
           id="init-theme"
           strategy="beforeInteractive"

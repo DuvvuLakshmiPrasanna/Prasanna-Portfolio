@@ -40,7 +40,6 @@ function BrandMark({ theme }: { theme: "dark" | "light" }) {
       >
         LP
       </text>
-      <path d="M5 35H66" stroke={isDark ? "#ffffff" : "url(#py-mark)"} strokeLinecap="round" strokeWidth="2.5" opacity={isDark ? 0.92 : 0.85} />
     </svg>
   );
 }
@@ -88,13 +87,13 @@ export default function Navbar() {
 
   return (
     <nav className="fixed left-0 right-0 top-4 z-50 px-4 sm:px-6">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-border/70 bg-surface/80 px-4 py-3 shadow-luxury backdrop-blur-2xl lg:px-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-border/70 bg-surface/72 px-4 py-3 shadow-luxury backdrop-blur-2xl lg:px-5">
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-[0.25em] text-foreground">
           <BrandMark theme={theme} />
           <span className="sr-only">{PORTFOLIO_DATA.name}</span>
         </Link>
 
-        <div className="hidden items-center gap-1 rounded-full border border-border/70 bg-card/60 p-1 lg:flex">
+        <div className="hidden items-center gap-1 rounded-full bg-card/45 p-1 lg:flex">
           {NAVIGATION_ITEMS.map((item) => (
             <Link key={item.id} href={item.href} onClick={() => handleNavClick(item.href)} className={navLinkClasses(item.id)}>
               {item.label}
@@ -111,8 +110,9 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
-            href="#contact"
-            onClick={() => handleNavClick("#contact")}
+            href={PORTFOLIO_DATA.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden items-center gap-2 rounded-full border border-border/70 bg-gradient-to-r from-primary/15 to-secondary/15 px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow lg:inline-flex"
           >
             <Download size={16} />
@@ -145,7 +145,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen((current) => !current)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border/70 bg-card/70 text-foreground shadow-luxury transition-all duration-300 hover:border-primary/30 hover:shadow-glow lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border/70 bg-card/70 text-foreground shadow-luxury transition-all duration-300 hover:shadow-glow lg:hidden"
             aria-label="Toggle navigation menu"
           >
             <motion.span animate={{ rotate: isOpen ? 90 : 0 }} transition={{ duration: 0.25 }} className="flex items-center justify-center">
@@ -184,8 +184,9 @@ export default function Navbar() {
 
             <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
               <Link
-                href="#contact"
-                onClick={() => handleNavClick("#contact")}
+                href={PORTFOLIO_DATA.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-border/70 bg-gradient-to-r from-primary/15 to-secondary/15 px-4 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:shadow-glow"
               >
                 <Download size={16} />

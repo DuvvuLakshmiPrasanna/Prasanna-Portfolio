@@ -14,8 +14,9 @@ type Node = {
 
 const NODE_COUNT_MIN = 82;
 const NODE_COUNT_MAX = 98;
-const CONNECTION_DISTANCE = 120;
-const REPEL_DISTANCE = 150;
+const CONNECTION_DISTANCE = 140;
+const REPEL_DISTANCE = 165;
+const CURSOR_CONNECTION_DISTANCE = 180;
 
 function createNodes(width: number, height: number) {
   const count = Math.round(Math.min(NODE_COUNT_MAX, Math.max(NODE_COUNT_MIN, (width * height) / 24000)));
@@ -28,9 +29,9 @@ function createNodes(width: number, height: number) {
       x: homeX,
       y: homeY,
       homeX,
-      homeY,
-      vx: (Math.random() - 0.5) * 0.22,
-      vy: (Math.random() - 0.5) * 0.22,
+        homeY,
+      vx: (Math.random() - 0.5) * 0.36,
+      vy: (Math.random() - 0.5) * 0.36,
       radius: 1.1 + Math.random() * 1.6,
     } satisfies Node;
   });
@@ -53,23 +54,23 @@ export default function NetworkCanvas() {
     let animationFrame = 0;
     let mouse = { x: null as number | null, y: null as number | null };
     let palette = {
-      line: "rgba(220, 232, 255, 0.15)",
-      node: "rgba(245, 249, 255, 0.82)",
-      nodeAccent: ["rgba(245, 249, 255, 0.96)"] as string[],
+      line: "rgba(220, 232, 255, 0.18)",
+      node: "rgba(245, 249, 255, 0.86)",
+      nodeAccent: ["rgba(245, 249, 255, 0.98)"] as string[],
     };
 
     const syncPalette = () => {
       const theme = document.documentElement.getAttribute("data-theme") || "dark";
       palette = theme === "light"
         ? {
-            line: "rgba(64,64,64,0.12)",
-            node: "rgba(64,64,64,0.9)",
-            nodeAccent: ["rgba(64,64,64,0.95)"] as string[],
+            line: "rgba(52, 63, 90, 0.18)",
+            node: "rgba(52, 63, 90, 0.82)",
+            nodeAccent: ["rgba(52, 63, 90, 0.92)"] as string[],
           }
         : {
-            line: "rgba(220, 232, 255, 0.32)",
+            line: "rgba(220, 232, 255, 0.28)",
             node: "rgba(245, 249, 255, 0.95)",
-            nodeAccent: ["rgba(245, 249, 255, 0.96)"] as string[],
+            nodeAccent: ["rgba(245, 249, 255, 0.98)"] as string[],
           };
     };
 
@@ -86,11 +87,15 @@ export default function NetworkCanvas() {
       nodes = createNodes(width, height);
     };
 
-    const handleMouseMove = (event: MouseEvent) => {
+    const handleViewportChange = () => {
+      window.requestAnimationFrame(resize);
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
       mouse = { x: event.clientX, y: event.clientY };
     };
 
-    const handleMouseLeave = () => {
+    const handlePointerLeave = () => {
       mouse = { x: null, y: null };
     };
 
@@ -101,15 +106,26 @@ export default function NetworkCanvas() {
     syncPalette();
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     window.addEventListener("resize", resize);
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("mouseleave", handleMouseLeave);
+    window.visualViewport?.addEventListener("resize", handleViewportChange);
+    window.visualViewport?.addEventListener("scroll", handleViewportChange);
+    window.addEventListener("orientationchange", handleViewportChange);
+    // pointer events cover mouse + touch + pen inputs
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointerleave", handlePointerLeave);
+    window.addEventListener("pointercancel", handlePointerLeave);
+
+    let frame = 0;
 
     const tick = () => {
+      frame += 1;
       context.clearRect(0, 0, width, height);
 
       nodes.forEach((node) => {
-        node.vx += (node.homeX - node.x) * 0.00035;
-        node.vy += (node.homeY - node.y) * 0.00035;
+        const waveX = Math.sin((frame + node.homeY) * 0.004) * 0.03;
+        const waveY = Math.cos((frame + node.homeX) * 0.0045) * 0.03;
+
+        node.vx += (node.homeX - node.x) * 0.00055 + waveX;
+        node.vy += (node.homeY - node.y) * 0.00055 + waveY;
 
         if (mouse.x !== null && mouse.y !== null) {
           const dx = node.x - mouse.x;
@@ -123,8 +139,8 @@ export default function NetworkCanvas() {
           }
         }
 
-        node.vx *= 0.985;
-        node.vy *= 0.985;
+        node.vx *= 0.992;
+        node.vy *= 0.992;
         node.x += node.vx;
         node.y += node.vy;
 
@@ -153,25 +169,51 @@ export default function NetworkCanvas() {
           const dy = first.y - second.y;
           const distance = Math.hypot(dx, dy);
 
-          if (distance > CONNECTION_DISTANCE) continue;
+            if (distance > CONNECTION_DISTANCE) continue;
 
-          const alpha = Math.max(0, (1 - distance / CONNECTION_DISTANCE) * 0.45);
-          context.beginPath();
-          context.strokeStyle = palette.line;
-          context.globalAlpha = alpha;
-          context.moveTo(first.x, first.y);
-          context.lineTo(second.x, second.y);
-          context.stroke();
+            const alpha = Math.max(0, (1 - distance / CONNECTION_DISTANCE) * 0.5);
+            context.beginPath();
+            context.strokeStyle = palette.line;
+            context.globalAlpha = alpha;
+            context.lineWidth = 1;
+            context.lineCap = "round";
+            context.moveTo(first.x, first.y);
+            context.lineTo(second.x, second.y);
+            context.stroke();
         }
       }
 
       context.globalAlpha = 1;
-      nodes.forEach((node, index) => {
-        context.beginPath();
-        context.fillStyle = palette.nodeAccent[index % palette.nodeAccent.length] || palette.node;
-        context.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        context.fill();
-      });
+        // If the cursor is near, draw connecting lines and add glow to nodes
+        nodes.forEach((node, index) => {
+          // node glow
+          context.save();
+          context.beginPath();
+          context.fillStyle = palette.nodeAccent[index % palette.nodeAccent.length] || palette.node;
+          context.shadowBlur = 10;
+          context.shadowColor = (palette.nodeAccent[index % palette.nodeAccent.length] || palette.node) as string;
+          context.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+          context.fill();
+          context.restore();
+
+          // draw line to cursor when close
+          if (mouse.x !== null && mouse.y !== null) {
+            const dxm = node.x - mouse.x;
+            const dym = node.y - mouse.y;
+            const distMouse = Math.hypot(dxm, dym);
+            if (distMouse > 0 && distMouse < CURSOR_CONNECTION_DISTANCE) {
+              const alphaM = Math.max(0, (1 - distMouse / CURSOR_CONNECTION_DISTANCE) * 0.9);
+              context.beginPath();
+              context.strokeStyle = palette.nodeAccent[0] || palette.line;
+              context.globalAlpha = alphaM;
+              context.lineWidth = 1.2;
+              context.moveTo(node.x, node.y);
+              context.lineTo(mouse.x, mouse.y);
+              context.stroke();
+              context.globalAlpha = 1;
+            }
+          }
+        });
 
       animationFrame = window.requestAnimationFrame(tick);
     };
@@ -182,10 +224,14 @@ export default function NetworkCanvas() {
       window.cancelAnimationFrame(animationFrame);
       observer.disconnect();
       window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseleave", handleMouseLeave);
+      window.visualViewport?.removeEventListener("resize", handleViewportChange);
+      window.visualViewport?.removeEventListener("scroll", handleViewportChange);
+      window.removeEventListener("orientationchange", handleViewportChange);
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerleave", handlePointerLeave);
+      window.removeEventListener("pointercancel", handlePointerLeave);
     };
   }, []);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 h-full w-full" />;
+  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 block h-[100dvh] w-screen" />;
 }

@@ -1,0 +1,200 @@
+%% ============================================================
+%%  Duvvu Lakshmi Prasanna — Resume
+%%  1. Go to overleaf.com → New Project → Blank Project
+%%  2. Delete everything in the editor
+%%  3. Paste this entire file
+%%  4. Click Recompile
+%%  Compiler: pdfLaTeX (Overleaf default — no changes needed)
+%% ============================================================
+
+\documentclass[9.5pt, letterpaper]{article}
+
+\usepackage[
+  top=0.38in, bottom=0.38in,
+  left=0.50in, right=0.50in
+]{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{array}
+\usepackage{tabularx}
+
+%% Font: Times New Roman clone
+\usepackage{mathptmx}
+
+%% Clickable links — black, no box
+\hypersetup{
+  colorlinks = true,
+  urlcolor   = black,
+  linkcolor  = black,
+  pdfborder  = {0 0 0}
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+%% Section: ALL CAPS + bold + full-width rule
+\titleformat{\section}
+  {\bfseries\large\MakeUppercase}{}
+  {0em}{}
+  [\vspace{-4pt}\rule{\linewidth}{0.7pt}\vspace{0pt}]
+\titlespacing{\section}{0pt}{4pt}{2pt}
+
+%% Bullet list settings — tight
+\setlist[itemize]{
+  leftmargin=1.4em, itemsep=0pt,
+  parsep=0pt, topsep=1pt, partopsep=0pt,
+  label=\textbullet
+}
+
+%% Right-aligned date helper
+\newcommand{\dateright}[2]{%
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    #1 & \textbf{\small #2}
+  \end{tabularx}}
+
+%% =============================================================
+\begin{document}
+
+%% ── NAME & CONTACT ──────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries Duvvu Lakshmi Prasanna}\\[2pt]
+  \small
+  \href{mailto:ig.prasannayadav@gmail.com}{ig.prasannayadav@gmail.com}
+  ~|~ 7306742255
+  ~|~ \href{https://www.linkedin.com/in/prasanna-yadav2304}{linkedin.com/in/prasanna-yadav2304}
+  ~|~ \href{https://github.com/DuvvuLakshmiPrasanna}{github.com/DuvvuLakshmiPrasanna}
+  ~|~ \href{https://drive.google.com/file/d/1r0EP0ru71Zi08469QAI2b3S7EdA8offd/view?usp=drive_link}{Resume}
+\end{center}
+
+\vspace{2pt}
+
+%% ── PROFESSIONAL SUMMARY / ABOUT ────────────────────────────────────
+\section{Professional Summary}
+{\setlength{\parskip}{1.0pt}\small%
+\noindent Data Science Aspirant\\
+\noindent Full Stack Developer\\
+\noindent Software Engineer\\
+\noindent Blockchain Enthusiast%
+}
+
+\vspace{2pt}
+
+%% ── SKILLS ─────────────────────────────────
+\section{Skills}
+{\setlength{\parskip}{1.0pt}\small%
+\noindent\textbf{Languages:} Python, Java, C++, C, TypeScript, JavaScript.\\
+\noindent\textbf{Frontend:} HTML, CSS, React.js, React Native, Bootstrap.\\
+\noindent\textbf{Backend \& APIs:} Node.js, Express.js, REST APIs.\\
+\noindent\textbf{Databases:} SQL (PostgreSQL, MySQL), MongoDB, Firebase (NoSQL).\\
+\noindent\textbf{CS Fundamentals:} Data Structures \& Algorithms, OOP, OS, Networks, DBMS.\\
+\noindent\textbf{Developer Tools:} VS Code, Figma, Cursor, Google Colab, Jupyter, Postman, GenAI tools.\\
+\noindent\textbf{Cloud \& DevOps:} AWS (basics), Docker, Git, GitHub.\\
+\noindent\textbf{Soft Skills:} Leadership, Teamwork, Problem Solving.%
+}
+
+\vspace{2pt}
+
+%% ── PROJECTS ────────────────────────────────────────────────
+\section{Projects}
+
+\noindent
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+  \textbf{LUMIX -- AI-Powered Development Tools ~(HTML, CSS, JavaScript, Node.js, REST API)} &
+  \textbf{\href{https://github.com/DuvvuLakshmiPrasanna/AI_World}{GitHub}} ~|~ \textbf{\href{https://lumixproject.onrender.com}{Live Demo}}
+\end{tabularx}\vspace{-2pt}
+\begin{itemize}
+  \item Built an AI-powered platform offering real-time code suggestions and automated developer insights.
+  \item Designed modular REST APIs with clean code principles, enabling a scalable and maintainable architecture.
+\end{itemize}
+
+\vspace{3pt}
+\noindent
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+  \textbf{LLM-Powered Intent Router ~(Node.js, Express, LLM (Groq), REST API)} &
+  \textbf{\href{https://github.com/DuvvuLakshmiPrasanna/LLM-powered-intent-router}{GitHub}} ~|~ \textbf{\href{https://llm-powered-intent-router.onrender.com/}{Live Demo}}
+\end{tabularx}\vspace{-2pt}
+\begin{itemize}
+  \item Built an LLM-based system that classifies user intent and routes queries to the right AI handler.
+  \item Developed Express REST APIs to process requests in real time with structured JSON responses.
+\end{itemize}
+
+\vspace{3pt}
+\noindent
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+  \textbf{Notice Hub -- Centralized Announcement Platform ~(HTML, CSS, JavaScript, Firebase)} &
+  \textbf{\href{https://github.com/DuvvuLakshmiPrasanna/Notice_Hub}{GitHub}} ~|~ \textbf{\href{https://duvvulakshmiprasanna.github.io/Notice_Hub/}{Live Demo}}
+\end{tabularx}\vspace{-2pt}
+\begin{itemize}
+  \item Built a responsive announcement platform with role-based access and real-time updates.
+  \item Integrated Firebase Realtime Database for live sync and persistent multi-user session storage.
+\end{itemize}
+
+\vspace{2pt}
+
+%% ── EXPERIENCE ──────────────────────────────────────────────
+\section{Experience}
+
+\dateright{%
+  \textbf{Full Stack Developer Intern},~\textbf{Technical Hub}
+  ~\textnormal{(\href{https://drive.google.com/file/d/1g7crCvVdDMeZgIonjfO84YQrIZWaGruN/view?usp=sharing}{\textit{Offer Letter}})}%
+}{May 2026 -- June 2026}
+\begin{itemize}
+  \item Developed and deployed full-stack apps using React Native and Node.js with optimized API integration.
+  \item Enhanced app performance, fixed bugs, and improved UX through efficient state and API management.
+  \item Followed Agile workflows, maintained Git version control, and participated in peer code reviews.
+\end{itemize}
+
+\vspace{2pt}
+
+%% ── PROGRAMMING ACHIEVEMENTS ────────────────────────────────
+\section{Programming Achievements}
+\begin{itemize}
+  \item \href{https://leetcode.com/u/prasannayadav/}{\textbf{LeetCode}} --
+        Solved \textbf{150+} problems in Data Structures and Algorithms.
+  \item \href{https://www.geeksforgeeks.org/profile/prasannay8d9p}{\textbf{GeeksforGeeks}} --
+        Solved \textbf{150+} DSA problems, building strong algorithmic skills.
+  \item \href{https://codeforces.com/profile/prasannayadav}{\textbf{Codeforces}} --
+        Completed competitive programming challenges regularly.
+  \item \href{https://www.hackerrank.com/profile/prasannayadav241}{\textbf{HackerRank}} --
+        Achieved \textbf{Golden badge (C)} and \textbf{Silver badges (Java, Python)}.
+  \item \href{https://codolio.com/profile/prasanna_yadav}{\textbf{Codolio Portfolio}} --
+        Coding portfolio covering all competitive programming and project work.
+\end{itemize}
+
+\vspace{2pt}
+
+%% ── EDUCATION ───────────────────────────────────────────────
+\section{Education}
+
+\dateright{%
+  \textbf{B.Tech in Computer Science \& Engineering (Specialization: Data Science)}\\
+  Aditya College of Engineering and Technology $|$ CGPA: 8.08/10
+}{Sept 2023 -- 2027}
+\begin{itemize}
+  \item \textbf{Intermediate [MPC]:} Sri Chaitanya Junior College $|$ Percentage: 82\%
+  \item \textbf{High School:} Bhashyam Educational Institutions $|$ CGPA: 10/10
+\end{itemize}
+
+\vspace{2pt}
+
+%% ── CERTIFICATIONS ──────────────────────────────────────────
+\section{Certifications}
+\begingroup
+\setlength{\parskip}{0pt}
+\noindent\textbf{Cisco (Web \& Programming):} \href{https://drive.google.com/file/d/1wAziycAJUGoCn-medftrjyXf3j5uF5YK/view?usp=drive_link}{HTML Essentials}, \href{https://drive.google.com/file/d/1ig8VbzGE86mEPwbvJeivFt1Xr3l-pcou/view?usp=drive_link}{CSS Essentials}, \href{https://drive.google.com/file/d/1yLNkz-4EV2rr7bL8Nk0fcr8SjrTFNVD6/view?usp=drive_link}{JavaScript Essentials}, \href{https://drive.google.com/file/d/1uWAUzYSvWiwOUIN5HfilFszG-2Oeqdp2/view?usp=drive_link}{Python Essentials}, \href{https://drive.google.com/file/d/1130QQGDwppZilo5irfBfPpCRN9aOwA3L/view?usp=sharing}{Programming Essentials in C}\\
+\noindent\textbf{Cisco (Systems \& Data):} \href{https://drive.google.com/file/d/1Jrtb47UdGK8Zs9Pz4uMawckqMwuFfSaP/view?usp=drive_link}{Introduction to Data Science}, \href{https://drive.google.com/file/d/1R4pdtw3A2dGMPZmSa_e9BLHMe0-YtumC/view?usp=drive_link}{Operating Systems Basics}\\
+\noindent\textbf{Microsoft \& MongoDB:} \href{https://drive.google.com/file/d/1ampPWo_hKQdqehqmtV5DfocZ2_0jlwm1/view?usp=sharing}{GitHub Foundations}, \href{https://drive.google.com/file/d/1hXMR8VoA8duEx5X-wnLL5fsHIebunVfx/view?usp=sharing}{MongoDB Certified Associate Developer}\\
+\noindent\textbf{NPTEL:} \href{https://drive.google.com/file/d/18-4-qHfpwvQ1I94bnqY9PMl349MNudVd/view?usp=drive_link}{The Joy of Computing Using Python}, \href{https://drive.google.com/file/d/1GDnvZZ7VnI3uCbizZP5Pq5r8hGJZ_z1h/view?usp=drive_link}{Data Structure and Algorithms Using Java}\\
+\noindent\textbf{Oracle Academy:} \href{https://drive.google.com/file/d/1h-sSGyARcbbPuMGnNhv05JVg_LtuOUxk/view?usp=sharing}{Java Foundation}, \href{https://drive.google.com/file/d/1wHhdpnNaMZ2tPRvei3qd44YP4C6h1GPW/view?usp=drive_link}{Java Programming}\\
+\noindent\textbf{Red Hat Academy:} \href{https://drive.google.com/file/d/12fNCIEn2vkl8_cExgSA0yeaGAVV0lnN7/view?usp=sharing}{Introduction to Python Programming}\\
+\hfill\textbf{IT Specialist:} \href{https://drive.google.com/file/d/16RZFnbI9YqlgamFKHb7MCllLwOQuMZ7R/view?usp=sharing}{HTML and CSS}
+\endgroup
+
+\end{document}

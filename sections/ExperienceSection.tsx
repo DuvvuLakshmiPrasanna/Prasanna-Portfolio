@@ -6,6 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import GlassCard from "@/components/GlassCard";
 import { EXPERIENCE } from "@/lib/constants";
 import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,12 +62,12 @@ export default function ExperienceSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 md:mb-16">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/75">
-            Experience
-          </p>
           <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-4 text-foreground">
-            Shipping polished product work across the stack.
+            Experience
           </h2>
+          <p className="mb-4 text-sm md:text-base font-medium text-foreground/85">
+            Shipping polished product work across the stack.
+          </p>
           <div className="h-1 w-24 rounded-full bg-gradient-to-r from-primary via-secondary to-cyan-300" />
         </div>
 
@@ -92,8 +93,20 @@ export default function ExperienceSection() {
                         {exp.company}
                       </p>
                     </div>
-                    <div className="inline-block whitespace-nowrap rounded-full border border-border/70 bg-card/80 px-3 py-1 text-xs font-medium text-foreground/95">
-                      {exp.duration}
+                    <div className="flex flex-col items-start gap-2 sm:items-end">
+                      <div className="inline-block whitespace-nowrap rounded-full border border-border/70 bg-card/80 px-3 py-1 text-xs font-medium text-foreground/95">
+                        {exp.duration}
+                      </div>
+                      {exp.offerLetter && (
+                        <Link
+                          href={exp.offerLetter}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center rounded-full border border-border/70 bg-background/45 px-3 py-1 text-xs font-medium text-foreground/80 transition-colors hover:border-primary/30 hover:text-foreground"
+                        >
+                          Offer Letter
+                        </Link>
+                      )}
                     </div>
                   </div>
 

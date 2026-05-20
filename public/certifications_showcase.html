@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Certifications Showcase</title>
+    <style>
+      :root {
+        --bg: #070707;
+        --panel: #0f0f0f;
+        --panel-2: #141414;
+        --muted: #7d7d7d;
+        --text: #e6eef2;
+        --accent: #b8ff2c;
+        --accent-soft: rgba(184, 255, 44, 0.12);
+        --border: rgba(255, 255, 255, 0.08);
+      }
+
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background: radial-gradient(circle at top, #101010 0%, var(--bg) 60%);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+
+      .wrap {
+        max-width: 1180px;
+        margin: 24px auto;
+        padding: 16px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 14px;
+      }
+
+      .panel {
+        background: rgba(15, 15, 15, 0.95);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      .left {
+        padding: 12px;
+        height: 720px;
+        overflow: auto;
+      }
+
+      .right {
+        padding: 12px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .subtitle {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+
+      .fullbtn {
+        color: var(--accent);
+        border: 1px solid rgba(184, 255, 44, 0.18);
+        background: rgba(184, 255, 44, 0.02);
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .groupsummary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        margin: 4px 6px 12px;
+      }
+
+      .group-btn {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 12px 14px;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+
+      .group-btn.on {
+        border-color: rgba(184, 255, 44, 0.25);
+        box-shadow: inset 0 0 0 1px rgba(184, 255, 44, 0.05);
+      }
+
+      .group-left { display: flex; align-items: center; gap: 10px; }
+      .group-icon { font-size: 18px; }
+      .group-name { font-size: 14px; }
+      .group-count { color: var(--muted); font-size: 12px; }
+
+      .cert-list { margin: 2px 0 10px; padding-left: 18px; }
+      .cert-item {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        margin: 6px 0;
+        border-radius: 10px;
+        color: #b8c4c8;
+        cursor: pointer;
+        transition: 0.15s ease;
+      }
+      .cert-item:hover { background: rgba(255,255,255,0.03); }
+      .cert-item.on {
+        color: #fff;
+        background: var(--accent-soft);
+        outline: 1px solid rgba(184, 255, 44, 0.2);
+      }
+      .cert-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #404040;
+        margin-right: 12px;
+        flex: 0 0 auto;
+      }
+      .cert-item.on .cert-dot { background: var(--accent); box-shadow: 0 0 8px rgba(184,255,44,0.4); }
+
+      .preview-card {
+        flex: 1;
+        background: linear-gradient(180deg, var(--panel), var(--panel-2));
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 14px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .preview-head {
+        padding: 14px 16px 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .preview-name { font-size: 18px; font-weight: 600; margin: 0; }
+      .preview-group { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+      .preview-body {
+        position: relative;
+        flex: 1;
+        min-height: 0;
+        background: #121212;
+      }
+
+      .preview-body img,
+      .preview-body iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        object-fit: cover;
+      }
+
+      .empty-state {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #818181;
+        font-size: 14px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(184, 255, 44, 0.08);
+        color: var(--accent);
+        border: 1px solid rgba(184, 255, 44, 0.16);
+        font-size: 12px;
+        margin-top: 8px;
+      }
+
+      @media (max-width: 960px) {
+        .grid { grid-template-columns: 1fr; }
+        .left, .right { height: auto; min-height: 600px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="grid">
+        <section class="panel left">
+          <div class="groupsummary">
+            <span>Providers</span>
+            <span id="totalCount">0 certificates</span>
+          </div>
+          <div id="groups"></div>
+        </section>
+
+        <section class="panel right">
+          <div class="topbar">
+            <div>
+              <div id="previewTitle" class="title">Select a certificate</div>
+              <div id="previewGroup" class="subtitle"></div>
+            </div>
+            <a id="fullLink" class="fullbtn" href="#" target="_blank" rel="noreferrer">Full screen ↗</a>
+          </div>
+
+          <div class="preview-card">
+            <div class="preview-body">
+              <div id="emptyState" class="empty-state">Select a certificate to preview</div>
+              <img id="previewImg" alt="Certificate preview" style="display:none" />
+              <iframe id="previewIframe" title="Certificate preview" style="display:none"></iframe>
+            </div>
+          </div>
+          <div id="statusLine"></div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const DEFAULT_SVG = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="100%" height="100%" fill="#121212"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#8a8a8a" font-family="Arial" font-size="18">Certificate Preview</text></svg>';
+
+      const CERTS = [
+        { group: 'Cisco — Systems & Data', icon: '🖥️', items: [
+          { title: 'JavaScript Essentials', href: 'https://drive.google.com/file/d/1ABC/view', thumb: '/certs/cert1.svg' },
+          { title: 'Networks Essentials', href: 'https://drive.google.com/file/d/1DEF/view', thumb: '/certs/cert2.svg' }
+        ]},
+        { group: 'Microsoft', icon: '☁️', items: [
+          { title: 'Azure Fundamentals', href: 'https://drive.google.com/file/d/2ABC/view', thumb: '/certs/cert3.svg' }
+        ]},
+        { group: 'MongoDB', icon: '🟢', items: [
+          { title: 'MongoDB Basics', href: 'https://drive.google.com/file/d/2DEF/view', thumb: '/certs/cert4.svg' }
+        ]},
+        { group: 'Red Hat Academy', icon: '🎓', items: [
+          { title: 'Linux Essentials', href: 'https://drive.google.com/file/d/3ABC/view', thumb: '/certs/cert5.svg' }
+        ]},
+        { group: 'Web Fundamentals', icon: '📘', items: [
+          { title: 'IT Specialist: HTML & CSS', href: '', thumb: '/certs/cert6.svg' }
+        ]}
+      ];
+
+      const groupsEl = document.getElementById('groups');
+      const totalCount = document.getElementById('totalCount');
+      const previewTitle = document.getElementById('previewTitle');
+      const previewGroup = document.getElementById('previewGroup');
+      const previewImg = document.getElementById('previewImg');
+      const previewIframe = document.getElementById('previewIframe');
+      const emptyState = document.getElementById('emptyState');
+      const fullLink = document.getElementById('fullLink');
+      const statusLine = document.getElementById('statusLine');
+
+      let openGroup = 0;
+      let activeCert = null;
+
+      const getDriveId = (url) => {
+        if (!url) return null;
+        const m = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        return m ? m[1] : null;
+      };
+
+      const viewUrl = (url) => {
+        const id = getDriveId(url);
+        return id ? `https://drive.google.com/uc?export=view&id=${id}` : url;
+      };
+
+      const total = CERTS.reduce((sum, group) => sum + group.items.length, 0);
+      totalCount.textContent = `${total} certificates`;
+
+      function renderGroups() {
+        groupsEl.innerHTML = '';
+        CERTS.forEach((group, groupIndex) => {
+          const groupBtn = document.createElement('button');
+          groupBtn.className = 'group-btn' + (openGroup === groupIndex ? ' on' : '');
+          groupBtn.innerHTML = `
+            <div class="group-left"><span class="group-icon">${group.icon}</span><span class="group-name">${group.group}</span></div>
+            <div class="group-count">${group.items.length}</div>`;
+          groupBtn.onclick = () => {
+            openGroup = groupIndex;
+            activeCert = group.items[0] || null;
+            renderGroups();
+            renderPreview();
+          };
+          groupsEl.appendChild(groupBtn);
+
+          if (openGroup === groupIndex) {
+            const ul = document.createElement('ul');
+            ul.className = 'cert-list';
+            group.items.forEach((cert) => {
+              const li = document.createElement('li');
+              li.className = 'cert-item' + (activeCert && activeCert.title === cert.title ? ' on' : '');
+              li.innerHTML = `<span style="display:flex;align-items:center"><span class="cert-dot"></span>${cert.title}</span><span style="color:var(--accent)">↗</span>`;
+              li.onclick = () => {
+                activeCert = cert;
+                renderGroups();
+                renderPreview();
+              };
+              ul.appendChild(li);
+            });
+            groupsEl.appendChild(ul);
+          }
+        });
+      }
+
+      function renderPreview() {
+        if (!activeCert) {
+          previewTitle.textContent = 'Select a certificate';
+          previewGroup.textContent = '';
+          emptyState.style.display = 'flex';
+          previewImg.style.display = 'none';
+          previewIframe.style.display = 'none';
+          fullLink.hidden = true;
+          statusLine.innerHTML = '';
+          return;
+        }
+
+        previewTitle.textContent = activeCert.title;
+        previewGroup.textContent = CERTS.find(g => g.items.includes(activeCert))?.group || '';
+        fullLink.hidden = !activeCert.href;
+
+        if (activeCert.thumb) {
+          previewImg.src = activeCert.thumb;
+          previewImg.style.display = 'block';
+          previewIframe.style.display = 'none';
+          emptyState.style.display = 'none';
+          statusLine.innerHTML = activeCert.href ? '<div class="badge">Thumbnail preview ready</div>' : '<div class="badge">Completed</div>';
+        } else if (activeCert.href) {
+          previewIframe.src = viewUrl(activeCert.href);
+          previewIframe.style.display = 'block';
+          previewImg.style.display = 'none';
+          emptyState.style.display = 'none';
+          statusLine.innerHTML = '<div class="badge">Live Drive preview</div>';
+        } else {
+          previewImg.src = DEFAULT_SVG;
+          previewImg.style.display = 'block';
+          previewIframe.style.display = 'none';
+          emptyState.style.display = 'none';
+          statusLine.innerHTML = '<div class="badge">Completed</div>';
+        }
+
+        if (activeCert.href) {
+          fullLink.href = viewUrl(activeCert.href);
+          fullLink.target = '_blank';
+        }
+      }
+
+      activeCert = CERTS[0].items[0];
+      renderGroups();
+      renderPreview();
+    </script>
+  </body>
+</html>

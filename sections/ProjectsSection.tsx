@@ -6,13 +6,50 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
 import GlassCard from "@/components/GlassCard";
 import { PROJECTS } from "@/lib/constants";
-import { Code, ExternalLink, MoveUpRight } from "lucide-react";
+import { Atom, Braces, Code2, Database, ExternalLink, Flame, LayoutDashboard, Palette, Server, Sparkles, Workflow } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+function tagIcon(tag: string) {
+  switch (tag) {
+    case "HTML":
+      return <Braces size={12} />;
+    case "CSS":
+      return <Palette size={12} />;
+    case "JavaScript":
+      return <Code2 size={12} />;
+    case "Node.js":
+      return <Server size={12} />;
+    case "REST API":
+    case "Express":
+      return <Workflow size={12} />;
+    case "LLM":
+      return <Sparkles size={12} />;
+    case "Firebase":
+      return <Flame size={12} />;
+    case "React":
+      return <Atom size={12} />;
+    case "Redux":
+      return <LayoutDashboard size={12} />;
+    case "Zustand":
+    case "Recoil":
+      return <Database size={12} />;
+    default:
+      return <Sparkles size={12} />;
+  }
+}
+
+function TagPill({ tag }: { tag: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-background/45 px-3 py-1 text-xs font-medium text-foreground/95 transition-colors duration-300 hover:border-primary/30">
+      {tagIcon(tag)}
+      {tag}
+    </span>
+  );
+}
+
 function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const isShowcase = project.variant === "showcase";
 
   useEffect(() => {
     const card = cardRef.current;
@@ -60,99 +97,31 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
       }}
       className="group h-full"
     >
-      <GlassCard className="flex h-full flex-col overflow-hidden p-0 transition-all duration-300 hover:shadow-glow-lg">
-        {isShowcase ? (
-          <div className="relative overflow-hidden border-b border-border/70 bg-surface">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,color-mix(in srgb,var(--primary) 12%,transparent),transparent_32%),linear-gradient(135deg,color-mix(in srgb,var(--card) 96%,transparent),color-mix(in srgb,var(--secondary) 66%,transparent))]" />
-            <div className="absolute left-4 top-4 h-1.5 w-24 rounded-full bg-primary/60 shadow-[0_0_20px_rgba(99,102,241,0.28)]" />
-            <div className="absolute left-6 top-8 z-10 text-[0.63rem] font-semibold uppercase tracking-[0.45em] text-white/75">
-              CASE STUDY 4
-            </div>
-            <div className="absolute right-6 top-8 z-10 text-[0.63rem] font-semibold uppercase tracking-[0.45em] text-white/75">
-              REACT
-            </div>
-            <div className="absolute left-8 top-20 h-28 w-28 rounded-full bg-primary/40 blur-3xl" />
-            <div className="absolute right-8 top-24 h-24 w-20 rounded-3xl border border-white/15 bg-white/10 backdrop-blur-xl" />
-            <div className="absolute right-16 top-32 h-16 w-36 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl" />
-            <div className="absolute inset-0 opacity-40" aria-hidden="true">
-              {Array.from({ length: 14 }).map((_, index) => (
-                <span
-                  key={index}
-                  className="absolute h-1 w-1 rounded-full bg-white/70"
-                  style={{
-                    left: `${10 + ((index * 19) % 78)}%`,
-                    top: `${12 + ((index * 13) % 64)}%`,
-                    opacity: 0.2 + (index % 4) * 0.18,
-                  }}
-                />
-              ))}
-            </div>
-            <div className="relative flex min-h-[19rem] flex-col justify-end p-6 text-white sm:min-h-[20rem]">
-              <h3 className="max-w-md text-3xl font-semibold leading-tight text-white sm:text-4xl">
-                {project.title}
-              </h3>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <span className="rounded-full border border-cyan-300/40 bg-transparent px-4 py-2 text-xs font-medium text-white/90">
-                  Motion-first
-                </span>
-                <span className="rounded-full border border-cyan-300/40 bg-transparent px-4 py-2 text-xs font-medium text-white/90">
-                  Luxury UI
-                </span>
-              </div>
-            </div>
-          </div>
-        ) : (
-            <div className="relative overflow-hidden border-b border-border/70">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_30%),linear-gradient(135deg,color-mix(in srgb,var(--primary) 18%,transparent),color-mix(in srgb,var(--secondary) 12%,transparent))]" />
-            <img
-              src={project.image}
-              alt={project.title}
-              className={`h-56 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${project.id === 3 ? 'project-image--colorize' : ''}`}
-              loading={project.id === 1 ? "eager" : "lazy"}
-            />
-            <div className="project-image-overlay absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/35 to-transparent" />
-            <div className="project-image-gloss absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.16)_50%,transparent_100%)] opacity-40" />
-            <div className="absolute inset-0 flex h-56 flex-col justify-between p-6 text-white">
-              <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/70">
-                <span>Case study {project.id}</span>
-                <span>{project.tags[0]}</span>
-              </div>
-              <div>
-                <p className="text-sm text-white/70">Featured system</p>
-                <h3 className="mt-3 max-w-md text-3xl font-semibold leading-tight text-white">
-                  {project.title}
-                </h3>
-              </div>
-              <div className="flex items-center gap-3 text-xs text-white/70">
-                <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">Motion-first</span>
-                <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">Luxury UI</span>
-              </div>
-            </div>
-          </div>
-        )}
+      <GlassCard className="flex h-full flex-col p-6 transition-all duration-300 hover:shadow-glow-lg">
+        <div className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-foreground/60">
+          <span>Project {project.id}</span>
+        </div>
 
-        <div className="flex flex-1 flex-col gap-5 p-6">
-          <p className="text-sm leading-7 text-foreground/95">
-            {project.description}
-          </p>
+        <h3 className="mb-4 text-2xl font-semibold leading-tight text-foreground sm:text-[1.7rem]">
+          {project.title}
+        </h3>
 
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-border/70 bg-background/45 px-3 py-1 text-xs font-medium text-foreground/95"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+        <p className="mb-4 text-sm leading-6 text-foreground/95 line-clamp-3 min-h-[4.5rem]">
+          {project.description}
+        </p>
 
-          <div className="mt-auto flex gap-3 pt-4">
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <TagPill key={tag} tag={tag} />
+          ))}
+        </div>
+
+        <div className="flex gap-3 pt-6 mt-auto">
             <Link
               href={project.live || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className={isShowcase ? "inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border/60 bg-transparent px-4 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/50 hover:text-white hover:shadow-glow-lg" : "inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-lg"}
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-lg"
             >
               <ExternalLink size={16} />
               Live Demo
@@ -161,14 +130,13 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
               href={project.github || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className={isShowcase ? "inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow" : "inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border/70 bg-card/70 px-4 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-glow"}
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-card/70 px-4 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
             >
-              {isShowcase ? <MoveUpRight size={16} /> : <Code size={16} />}
+              <Code2 size={16} />
               GitHub Repo
             </Link>
           </div>
-        </div>
-      </GlassCard>
+        </GlassCard>
     </div>
   );
 }
@@ -223,19 +191,16 @@ export default function ProjectsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 md:mb-16 max-w-3xl">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/75">
-            Projects
-          </p>
           <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-4 text-foreground">
-            Case studies presented like premium product launches.
+            Projects
           </h2>
-          <div className="h-1 w-24 rounded-full bg-gradient-to-r from-primary via-secondary to-cyan-300" />
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-foreground/95">
-            Each project card is treated like a startup launch page, with clearer hierarchy, richer surfaces, and a stronger premium presentation.
+          <p className="mb-4 text-sm md:text-base font-medium text-foreground/85">
+            Case studies presented like premium product launches.
           </p>
+          <div className="h-1 w-24 rounded-full bg-gradient-to-r from-primary via-secondary to-cyan-300" />
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 auto-rows-fr">
           {PROJECTS.map((project) => (
             <div key={project.id} data-project-card>
               <ProjectCard project={project} />

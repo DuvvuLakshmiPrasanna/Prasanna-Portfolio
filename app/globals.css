@@ -3,6 +3,15 @@
 /* Base theme variables are provided by Tailwind plugin (tailwind.config.ts).
    Avoid redefining tokens here to keep a single source of truth. */
 
+/* Hide notification badges */
+[data-testid*="issue"],
+.badge-notification,
+.notification-badge,
+[class*="notification"],
+[class*="issue-badge"] {
+  display: none !important;
+}
+
 /* Ensure shadow RGB tokens exist at runtime as a fallback for utilities */
 :root { --shadow-color-rgb: 2 6 23; }
 [data-theme="dark"] { --shadow-color-rgb: 2 6 23; }
@@ -99,6 +108,12 @@ html { scroll-behavior: smooth; }
   transition: filter 0.45s cubic-bezier(.2,.9,.2,1);
 }
 
+/* Make project images dark blue */
+.project-image {
+  filter: hue-rotate(-20deg) saturate(1.4) brightness(0.75) contrast(1.1);
+  transition: filter 0.45s cubic-bezier(.2,.9,.2,1);
+}
+
 .project-image--colorize:hover {
   filter: sepia(0.12) saturate(1.45) hue-rotate(-4deg) contrast(1.04) brightness(1.02);
 }
@@ -125,4 +140,63 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .project-image-gloss { opacity: 0.22 !important; }
 [data-theme="dark"] .project-image-gloss { opacity: 0.42 !important; }
+
+/* Glassy animations for skills section */
+@keyframes glassShine {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glassPulse {
+  0%, 100% {
+    box-shadow: 
+      inset 0 0 0 rgba(255, 255, 255, 0),
+      0 0 20px rgba(var(--primary-rgb, 59, 130, 246), 0);
+  }
+  50% {
+    box-shadow: 
+      inset 0 0 20px rgba(255, 255, 255, 0.1),
+      0 0 30px rgba(var(--primary-rgb, 59, 130, 246), 0.3);
+  }
+}
+
+@keyframes glassGlow {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 0px rgba(var(--primary-rgb, 59, 130, 246), 0));
+  }
+  50% {
+    filter: brightness(1.1) drop-shadow(0 0 12px rgba(var(--primary-rgb, 59, 130, 246), 0.4));
+  }
+}
+
+.skill-chip-glassy {
+  position: relative;
+  overflow: hidden;
+  animation: glassGlow 2s ease-in-out infinite;
+}
+
+.skill-chip-glassy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: glassShine 3s infinite;
+  pointer-events: none;
+}
+
+.skill-chip-glassy:hover {
+  animation: glassPulse 1.5s ease-in-out;
+}
 

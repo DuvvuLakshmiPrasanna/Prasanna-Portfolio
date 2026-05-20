@@ -26,17 +26,21 @@ npm install
 npm run dev
 ```
 
-3. Configure EmailJS (optional)
+3. Direct email delivery
 
-- Copy `.env.local.example` to `.env.local` and set the values:
+- The form posts directly to an email relay service so it works without SMTP setup.
+- If you want to use your own SMTP account instead, copy `.env.local.example` to `.env.local` and set the values:
 
 ```
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxx
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxx
-NEXT_PUBLIC_EMAILJS_USER_ID=user_xxx
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-smtp-username@example.com
+SMTP_PASS=your-smtp-password-or-app-password
+CONTACT_FROM_EMAIL=your-smtp-username@example.com
 ```
 
 - Restart the dev server after adding env vars.
+- The contact form sends to `ig.prasannayadav@gmail.com` and uses the visitor's email as reply-to.
 
 4. Notes
 
