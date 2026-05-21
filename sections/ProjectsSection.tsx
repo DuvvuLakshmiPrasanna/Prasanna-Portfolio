@@ -73,11 +73,7 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
     };
 
     const handleMouseLeave = () => {
-      gsap.to(card, {
-        rotationX: 0,
-        rotationY: 0,
-        duration: 0.6,
-      });
+      gsap.to(card, { rotationX: 0, rotationY: 0, duration: 0.6 });
     };
 
     card.addEventListener("mousemove", handleMouseMove);
@@ -90,53 +86,35 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
   }, []);
 
   return (
-    <div
-      ref={cardRef}
-      style={{
-        perspective: "1000px",
-      }}
-      className="group h-full"
-    >
-      <GlassCard className="flex h-full flex-col p-6 transition-all duration-300 hover:shadow-glow-lg">
-        <div className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-foreground/60">
-          <span>Project {project.id}</span>
-        </div>
-
-        <h3 className="mb-4 text-2xl font-semibold leading-tight text-foreground sm:text-[1.7rem]">
-          {project.title}
-        </h3>
-
-        <p className="mb-4 text-sm leading-6 text-foreground/95 line-clamp-3 min-h-[4.5rem]">
-          {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <TagPill key={tag} tag={tag} />
-          ))}
-        </div>
-
-        <div className="flex gap-3 pt-6 mt-auto">
-            <Link
-              href={project.live || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-lg"
-            >
-              <ExternalLink size={16} />
-              Live Demo
-            </Link>
-            <Link
-              href={project.github || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-card/70 px-4 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
-            >
-              <Code2 size={16} />
-              GitHub Repo
-            </Link>
+    <div ref={cardRef} style={{ perspective: "1000px" }} className="group h-full">
+      <GlassCard className="flex h-full min-h-[31rem] flex-col p-6 transition-all duration-300 hover:shadow-glow-lg lg:min-h-[32rem]">
+        <div className="flex flex-1 flex-col gap-3">
+          <div className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-foreground/60">
+            <span>Project {project.id}</span>
           </div>
-        </GlassCard>
+
+          <h3 className="min-h-[4.5rem] text-2xl font-semibold leading-tight text-foreground sm:min-h-[5rem] sm:text-[1.7rem]">{project.title}</h3>
+
+          <p className="min-h-[4.75rem] whitespace-pre-line text-sm leading-6 text-foreground/95 sm:min-h-[5.25rem]">{project.description}</p>
+
+          <div className="flex min-h-[3.5rem] flex-wrap content-start gap-2">
+            {project.tags.map((tag) => (
+              <TagPill key={tag} tag={tag} />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-auto flex gap-3 pt-3">
+          <Link href={project.live || "#"} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-lg">
+            <ExternalLink size={16} />
+            Live Demo
+          </Link>
+          <Link href={project.github || "#"} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-card/70 px-4 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow">
+            <Code2 size={16} />
+            GitHub Repo
+          </Link>
+        </div>
+      </GlassCard>
     </div>
   );
 }
@@ -150,40 +128,17 @@ export default function ProjectsSection() {
 
     const cards = container.querySelectorAll("[data-project-card]");
 
-    gsap.fromTo(
-      cards,
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: container,
-          start: "top center+=100",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    gsap.fromTo(cards, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, scrollTrigger: { trigger: container, start: "top center+=100", toggleActions: "play none none reverse" } });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.trigger && container.contains(trigger.trigger as Node)) {
-          trigger.kill();
-        }
+        if (trigger.trigger && container.contains(trigger.trigger as Node)) trigger.kill();
       });
     };
   }, []);
 
   return (
-    <section
-      id="projects"
-      ref={containerRef}
-      className="relative overflow-hidden py-20 md:py-32"
-    >
+    <section id="projects" ref={containerRef} className="relative overflow-hidden py-20 md:py-32">
       <div className="absolute inset-0 -z-10">
         <div className="absolute right-20 top-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl opacity-30" />
         <div className="absolute bottom-40 left-20 h-96 w-96 rounded-full bg-secondary/10 blur-3xl opacity-20" />
@@ -191,16 +146,12 @@ export default function ProjectsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 md:mb-16 max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-4 text-foreground">
-            Projects
-          </h2>
-          <p className="mb-4 text-sm md:text-base font-medium text-foreground/85">
-            Case studies presented like premium product launches.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-4 text-foreground">Projects</h2>
+          <p className="mb-4 text-sm md:text-base font-medium text-foreground/85">Case studies presented like premium product launches.</p>
           <div className="h-1 w-24 rounded-full bg-gradient-to-r from-primary via-secondary to-cyan-300" />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 auto-rows-fr">
+        <div className="grid auto-rows-fr items-stretch gap-6 md:grid-cols-2 lg:grid-cols-4">
           {PROJECTS.map((project) => (
             <div key={project.id} data-project-card>
               <ProjectCard project={project} />
@@ -209,12 +160,7 @@ export default function ProjectsSection() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-8 py-4 text-sm font-semibold text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-glow"
-          >
-            Have a project in mind?
-          </Link>
+          <Link href="#contact" className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-8 py-4 text-sm font-semibold text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-glow">Have a project in mind?</Link>
         </div>
       </div>
     </section>

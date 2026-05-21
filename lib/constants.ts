@@ -58,10 +58,10 @@ export const PROJECTS = [
     id: 1,
     title: "LUMIX — AI-Powered Development Tools",
     description:
-      "AI-powered platform delivering real-time code suggestions and automated developer insights with modular REST APIs built on clean architecture principles.",
+      "AI-powered platform delivering real-time code suggestions, automated developer insights, and modular REST APIs for a clean developer workflow. Focused on speeding up everyday development tasks while keeping the interface simple and practical.",
     longDescription:
-      "Built an AI-powered development platform that surfaces real-time code suggestions and automated developer insights. Designed modular REST APIs with clean code principles to keep the architecture scalable and maintainable.",
-    tags: ["HTML", "CSS", "JavaScript", "Node.js", "REST API"],
+      "Built an AI-powered development platform that surfaces real-time code suggestions and automated developer insights. Designed modular REST APIs with clean code principles to keep the architecture scalable, maintainable, and fast.",
+    tags: ["HTML", "CSS", "JavaScript", "Node.js"],
     github: "https://github.com/DuvvuLakshmiPrasanna/AI_World",
     live: "https://lumixproject.onrender.com",
     image: "/projects/lumix.svg",
@@ -71,9 +71,9 @@ export const PROJECTS = [
     id: 2,
     title: "React State Management Comparison",
     description:
-      "Interactive comparison tool showcasing Redux, Zustand, Recoil and Context API with real-world examples, performance metrics and live benchmarks. Designed with performance profiling and visual metrics to help developers choose the right state management library.",
+      "Interactive comparison tool showcasing Redux, Zustand, Recoil, and Context API with real-world state handling examples and performance insights. Helps developers compare how each solution behaves under practical application conditions.",
     longDescription:
-      "Built an interactive tool comparing popular React state management solutions. Showcases Redux, Zustand, Recoil, and Context API with real-world examples and performance benchmarks. Includes performance profiling and comprehensive metrics to help developers select the optimal solution.",
+      "Built an interactive comparison tool that demonstrates Redux, Zustand, Recoil, and Context API with real-world state handling examples. Added performance insights, reusable state patterns, and scalable guidance to help developers choose the right state management approach.",
     tags: ["React", "Redux", "Zustand", "TypeScript"],
     github: "https://github.com/DuvvuLakshmiPrasanna/React-State-Management-Comparison-New",
     live: "https://react-state-management-comparison-n.vercel.app/",
@@ -84,9 +84,9 @@ export const PROJECTS = [
     id: 3,
     title: "LLM-Powered Intent Router",
     description:
-      "LLM-based system that intelligently classifies user intent and routes queries to appropriate handlers with Express REST APIs and structured responses. Implements sophisticated natural language understanding with dynamic routing and intelligent request processing pipelines.",
+      "LLM-based system that classifies user intent and routes queries through smart processing pipelines, REST APIs, and modular AI workflows. Supports dynamic intent mapping, fallback handling, and structured responses for cleaner request orchestration.",
     longDescription:
-      "Built an LLM-based system that classifies user intent and routes queries to the right AI handler. Developed Express REST APIs to process requests in real time with structured JSON responses. Features intelligent routing logic with natural language understanding and advanced request processing.",
+      "Built an LLM-based intent routing system that classifies user intent and sends each query to the right handler. Developed REST APIs and modular AI workflows for structured responses, dynamic routing, fallback handling, and reliable request processing.",
     tags: ["Node.js", "Express", "LLM", "REST API"],
     github: "https://github.com/DuvvuLakshmiPrasanna/LLM-powered-intent-router",
     live: "https://llm-powered-intent-router.onrender.com/",
@@ -97,9 +97,9 @@ export const PROJECTS = [
     id: 4,
     title: "Notice Hub — Centralized Announcement Platform",
     description:
-      "Responsive announcement platform with role-based access, real-time updates and Firebase Realtime Database integration for live sync functionality.",
+      "Responsive announcement platform with role-based access, real-time updates, and Firebase Realtime Database sync for reliable communication.",
     longDescription:
-      "Built a responsive announcement platform with role-based access and real-time updates. Integrated Firebase Realtime Database for live sync and persistent multi-user session storage.",
+      "Built a responsive announcement platform with role-based access and real-time updates. Integrated Firebase Realtime Database for live sync, persistent multi-user session storage, and dependable announcement delivery.",
     tags: ["HTML", "CSS", "JavaScript", "Firebase"],
     github: "https://github.com/DuvvuLakshmiPrasanna/Notice_Hub",
     live: "https://duvvulakshmiprasanna.github.io/Notice_Hub/",
