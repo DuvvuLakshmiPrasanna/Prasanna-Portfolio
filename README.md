@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prasanna Portfolio
+
+A modern, animated portfolio built with Next.js and TypeScript to showcase projects, skills, experience, certifications, and contact details in a polished, recruiter-friendly format.
+
+## Live Demo
+
+- **Website:** https://prasanna-portfolio.vercel.app
+
+## Highlights
+
+- **Premium UI:** glassmorphism styling, subtle gradients, and smooth motion.
+- **Animated Experience:** GSAP-powered section reveals and interactive project cards.
+- **Responsive Layout:** optimized for mobile, tablet, and desktop viewing.
+- **Smart Navigation:** sticky navbar, scroll progress bar, and smooth scrolling.
+- **Projects Showcase:** equal-height cards with aligned action buttons and external links.
+- **Contact Flow:** integrated contact form with email delivery support.
+
+## Tech Stack
+
+- **Framework:** Next.js 16, React 19, TypeScript
+- **Styling:** Tailwind CSS 4, custom design tokens, responsive utility classes
+- **Animation:** GSAP, Framer Motion, Lenis
+- **Icons:** Lucide React, Font Awesome
+- **Email:** EmailJS, Nodemailer
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ recommended
+- npm
+
+### Install
+
+```bash
+npm install
+```
+
+### Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev
+```
+Start the development server.
 
-## Learn More
+```bash
+npm run build
+```
+Create a production build.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run start
+```
+Serve the production build locally.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run lint
+```
+Run ESLint checks.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact Form
 
-## Deploy on Vercel
+The contact section is wired for email delivery and can use SMTP fallback through the API route at `/api/contact`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you want to configure custom SMTP credentials, add a `.env.local` file with the required mail settings used by the API route.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+- `app/` — App Router pages, layout, and API routes
+- `components/` — Shared UI components
+- `sections/` — Main portfolio sections
+- `hooks/` — Custom hooks for scrolling and animation
+- `lib/` — Portfolio data and utility helpers
+- `public/` — Static assets and project images
+
+## Deployment
+
+This project is ready for Vercel deployment.
+
+1. Push the repository to GitHub.
+2. Import it into Vercel.
+3. Deploy using the default Next.js settings.
+
+## License
+
+Personal portfolio project. All rights reserved.
