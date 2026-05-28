@@ -52,22 +52,10 @@ export default function SkillsSection() {
     if (!element) return;
 
     const distance = Math.max(320, Math.floor(element.clientWidth * 0.78));
-    const start = element.scrollLeft;
-    const target = direction === "right" ? start + distance : start - distance;
-    const duration = 420;
-    const startTime = performance.now();
-
-    const step = (now: number) => {
-      const progress = Math.min(1, (now - startTime) / duration);
-      const eased = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
-      element.scrollLeft = start + (target - start) * eased;
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-
-    window.requestAnimationFrame(step);
+    element.scrollBy({
+      left: direction === "right" ? distance : -distance,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -111,10 +99,10 @@ export default function SkillsSection() {
 
         <div
           ref={scrollerRef}
-          className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-4 pr-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain scroll-smooth pb-5 pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {SKILLS.categories.map((category, categoryIndex) => (
-            <div key={categoryIndex} data-skill-category className="min-w-[18rem] snap-start sm:min-w-[20rem] lg:min-w-[22rem]">
+            <div key={categoryIndex} data-skill-category className="min-w-[18rem] snap-start sm:min-w-[20rem] lg:min-w-[22rem] [scroll-snap-stop:always]">
               <GlassCard className="flex h-full flex-col gap-8">
                 <div className="flex items-start justify-between gap-4">
                   <div>

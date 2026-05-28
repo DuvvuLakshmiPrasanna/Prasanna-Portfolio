@@ -15,6 +15,8 @@ const spaceMono = Space_Mono({
   variable: "--font-space-mono",
 });
 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://prasanna-portfolio.vercel.app").replace(/\/$/, "");
+
 export const metadata: Metadata = {
   title: "Duvvu Lakshmi Prasanna - Full Stack Developer",
   description: "Portfolio showcasing projects, skills, and experience for Duvvu Lakshmi Prasanna.",
@@ -22,12 +24,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://prasanna-portfolio.vercel.app",
+    url: siteUrl,
     siteName: "Duvvu Lakshmi Prasanna",
     title: "Duvvu Lakshmi Prasanna - Full Stack Developer",
     description: "Portfolio showcasing full-stack projects, skills, and experience.",
     images: [{
-      url: "https://prasanna-portfolio.vercel.app/og-image.png",
+      url: `${siteUrl}/og-image.png`,
       width: 1200,
       height: 630,
       alt: "Duvvu Lakshmi Prasanna Portfolio",
