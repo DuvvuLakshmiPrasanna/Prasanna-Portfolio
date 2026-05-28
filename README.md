@@ -9,7 +9,7 @@ This portfolio is designed to feel fast, modern, and recruiter-friendly. It uses
 ## Live Demo
 
 - GitHub Pages: add your published URL here after deployment
-- Previous Vercel preview: https://prasanna-portfolio.vercel.app
+- Vercel preview: https://prasanna-portfolio-18.vercel.app/
 
 ## Key Features
 
